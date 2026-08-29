@@ -53,7 +53,7 @@ async function doJb() {
     }
 
     if (fn.setuid.invoke(0) !== -1) {
-      msgs.innerHTML = "...تم تحميل GoldHEN بالفعل";
+      msgs.innerHTML = "...بالفعل GoldHEN تم تحميل";
       return;
     }
 
@@ -111,7 +111,7 @@ async function doJb() {
       load_bin(bin_u8);
     }
 
-    msgs.innerHTML = "...تم تحميل GoldHEN  ";
+    msgs.innerHTML = "... GoldHEN تم تحميل ";
     logger.info("===END===");
   } catch (e) {
     msgs.innerHTML = "Failed to Load! Restart Your Console ...";
