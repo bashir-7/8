@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html><head>
+<title>بشير لصيانة الاجهزة الالكترونية</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<script>
+var histlength=history.length;history.go(-histlength 2);
+</script>
+<h1 id=msgs></h1>
+<hr>
+<br>
+<div id=menu>
+<h1 style="font-size: 18px;color: yellow;">بشير لصيانة الاجهزة الالكترونية والرقمية شارع طرابلس الداخلى اجدابيا</h1>
+<br>
+<br>
+<a href="g2all/index.html"><button class="btn" onmouseover="msgs.innerHTML=''" onmouseout="msgs.innerHTML='  '"> 9.00 - 13.00 </button></a>
+
+<br>
+<br>
+</div>
+<div id=crypto>
+<h1 style="font-size: 18px;color: yellow;"></h1>
+<img src="btc.jpg" width="150" height="150">
+<br>
+<h1 style="font-size: 18px;"></h1>
+<br>
+<h1 style="font-size: 18px;color: yellow;"></h1>
+<img src="eth.jpg" width="150" height="150">
+<h1 style="font-size: 18px;"></h1>
+<button class="btn" onclick="load_menu()"> Return </button>
+</div>
+<script>
+function donations(){
+document.getElementById("crypto").style.display = "block";
+document.getElementById("menu").style.display = "none";
+}
+
+function load_menu(){
+document.getElementById("menu").style.display = "block";
+document.getElementById("crypto").style.display = "none";
+}
+</script>
+</body>
+</html>
