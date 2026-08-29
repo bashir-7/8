@@ -36,14 +36,14 @@ const lines = [];
 function hostOk() {
     var m = document.getElementById("msgs");
     if (m) {
-        m.innerHTML = "GoldHEN v2.4b18.10 Loaded ...";
+        m.innerHTML = "... GoldHEN تم تحميل";
     }
 }
 
 function hostFail() {
     var m = document.getElementById("msgs");
     if (m) {
-        m.innerHTML = "Failed to Load! Restart Your Console ...";
+        m.innerHTML = "...فشل التحميل! أعد تشغيل جهازك ";
         m.style.color = "yellow";
     }
 }
