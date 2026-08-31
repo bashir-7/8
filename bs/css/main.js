@@ -53,7 +53,7 @@ async function doJb() {
     }
 
     if (fn.setuid.invoke(0) !== -1) {
-      msgs.innerHTML = "...بالفعل GoldHEN تم تحميل";
+      msgs.innerHTML = "بنجاح سابقا GoldHEN تم تحميل";
       return;
     }
 
@@ -111,10 +111,10 @@ async function doJb() {
       load_bin(bin_u8);
     }
 
-    msgs.innerHTML = "... GoldHEN تم تحميل ";
+    msgs.innerHTML = "بنجاح.. استمتع بالألعاب GoldHEN تم تحميل ";
     logger.info("===END===");
   } catch (e) {
-    msgs.innerHTML = "Failed to Load! Restart Your Console ...";
+    msgs.innerHTML = "تفعيل الثغرة! أعد تشغيل جهازك وحاول مجدداً.";
     msgs.style.color = "yellow";
   }
 }
