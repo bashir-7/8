@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>مركز بشير لصيانة وتعديل الأجهزة الإلكترونية</title>
+    <title>بشير لصيانة الأجهزة الإلكترونية</title>
     
     <style>
         * {
@@ -14,9 +14,9 @@
             margin: 0;
             padding: 0;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: radial-gradient(circle at center, #1b2a4a 0%, #0d1117 70%, #05080c 100%);
+            background: radial-gradient(circle at center, #181a38 0%, #101228 100%);
             background-attachment: fixed;
-            background-color: #0d1117;
+            background-color: #101228;
             color: #ffffff;
             min-height: 100vh;
             display: flex;
@@ -45,13 +45,13 @@
 
         .subtitle {
             font-size: 0.95rem;
-            color: #8b949e;
+            color: #d1d5db;
             margin-bottom: 30px;
         }
 
         .status-screen {
             background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.15);
             padding: 12px;
             border-radius: 12px;
             font-size: 1.1rem;
@@ -79,7 +79,7 @@
             border: none;
             border-radius: 12px;
             cursor: pointer;
-            box-shadow: 0 4px 15px rgba(67, 100, 247, 0.2);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
             transition: all 0.4s ease;
             text-align: center;
         }
@@ -100,36 +100,41 @@
         }
 
         .btn-info {
-            background: linear-gradient(90deg, #1f4068, #162447);
-            border: 1px solid #1f4068;
+            background: #1e2448;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .btn-info:hover {
+            border-color: #38bdf8;
         }
 
         .fb-card {
             display: block;
             margin-top: 20px;
             padding: 15px;
-            background: rgba(24, 119, 242, 0.1);
-            border: 1px solid rgba(24, 119, 242, 0.3);
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.15);
             border-radius: 12px;
-            color: #1877f2;
+            color: #ffffff;
             text-decoration: none;
             font-weight: 500;
             transition: all 0.3s ease;
         }
 
         .fb-card:hover {
-            background: rgba(24, 119, 242, 0.2);
+            background: rgba(255, 255, 255, 0.12);
+            border-color: #38bdf8;
             transform: scale(1.02);
         }
 
         #info-card {
             display: none;
             margin-top: 25px;
-            background: rgba(22, 27, 34, 0.9);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: rgba(16, 18, 40, 0.9);
+            border: 1px solid rgba(255, 255, 255, 0.15);
             border-radius: 16px;
             padding: 25px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.6);
             backdrop-filter: blur(10px);
             animation: fadeIn 0.4s ease forwards;
         }
@@ -141,7 +146,7 @@
 
         .info-phone {
             font-size: 1.3rem;
-            color: #ff4757;
+            color: #ff6b81;
             margin: 0 0 15px 0;
             font-weight: 700;
             direction: ltr;
@@ -174,33 +179,27 @@
 <body>
 
     <div class="container">
-        <!--  -->
         <h1 class="logo-text">Bashir PS4/PS5</h1>
         <div class="subtitle"> مركز بشير لصيانة وتعديل الأجهزة الإلكترونية والرقمية شارع طرابلس الداخلي اجدابيا </div>
 
-        <!--  -->
         <div id="msgs" class="status-screen">مرحباً بك في موقعي</div>
 
-        <!--  -->
         <a href="b2/index.html" class="custom-btn btn-goldhen" 
            onmouseover="updateMsg('اضغط هنا للبدء في تعديل جهازك الآن')" 
            onmouseout="resetMsg()">
             تعديل جهازك من سوفت 9.00 الى 13.00
         </a>
 
-        <!-- -->
         <button class="custom-btn btn-info" onclick="showInfo()" 
                 onmouseover="updateMsg('اضغط هنا لإظهار رقم هاتف وأوقات عمل بشير')" 
                 onmouseout="resetMsg()">
             رقم هاتف وعنوان بشير
         </button>
 
-        <!-- -->
         <a href="https://www.facebook.com/Bshir2015" target="_blank" rel="noopener noreferrer" class="fb-card">
             يسعدني انضمامكم ومتابعتكم لصفحتي الرسمية على فيسبوك 
         </a>
 
-        <!-- -->
         <div id="info-card">
             <p class="info-address">العنوان: شارع طرابلس الداخلي - أجدابيا<br>مواعيد العمل: من الساعة 6:00 مساءً حتى 10:00 ليلاً.</p>
             <p class="info-phone">0924844115 : رقم الهاتف</p>
