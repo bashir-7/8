@@ -36,7 +36,7 @@ const lines = [];
 function hostOk() {
     var m = document.getElementById("msgs");
     if (m) {
-        m.innerHTML = "تم تحميل GoldHEN بالفعل .تحياتي، بشير ...";
+        m.innerHTML = "تم تحميل GoldHEN بالفعل .تحياتي، مركز بشير ...";
     }
 }
 
