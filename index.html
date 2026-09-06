@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>بشير لصيانة الأجهزة الإلكترونية</title>
+    
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: radial-gradient(circle at center, #008cb4 0%, #002d62 100%);
+            background-attachment: fixed;
+            background-color: #002d62;
+            color: #ffffff;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 550px;
+            padding: 30px 20px;
+            text-align: center;
+        }
+
+        h1.logo-text {
+            font-size: 2.8rem;
+            font-weight: 800;
+            letter-spacing: 1px;
+            color: #00f2fe;
+            text-shadow: 0 0 15px rgba(0, 242, 254, 0.8), 0 0 30px rgba(0, 242, 254, 0.4);
+            margin-bottom: 5px;
+            margin-top: 0;
+        }
+
+        .subtitle {
+            font-size: 0.95rem;
+            color: #e2e8f0;
+            margin-bottom: 30px;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        /* شاشة التنبيهات بتأثير النيون الزجاجي */
+        .status-screen {
+            background: rgba(0, 140, 180, 0.25);
+            border: 2px solid #00f2fe;
+            box-shadow: inset 0 0 15px rgba(0, 242, 254, 0.4), 0 0 20px rgba(0, 242, 254, 0.5);
+            padding: 12px;
+            border-radius: 14px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #ffffff;
+            margin-bottom: 25px;
+            min-height: 52px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(8px);
+        }
+
+        /* التصميم العام للأزرار الزجاجية المتوهجة */
+        .custom-btn {
+            display: block;
+            width: 100%;
+            padding: 16px 20px;
+            margin-bottom: 18px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #ffffff;
+            text-decoration: none;
+            background: rgba(0, 120, 160, 0.3);
+            border: 2px solid #00f2fe;
+            border-radius: 14px;
+            cursor: pointer;
+            box-shadow: inset 0 0 12px rgba(0, 242, 254, 0.3), 0 0 18px rgba(0, 242, 254, 0.4);
+            transition: all 0.3s ease;
+            text-align: center;
+            backdrop-filter: blur(6px);
+        }
+
+        .custom-btn:hover {
+            transform: translateY(-3px);
+            background: rgba(0, 180, 230, 0.4);
+            box-shadow: inset 0 0 20px rgba(0, 242, 254, 0.6), 0 0 28px rgba(0, 242, 254, 0.8);
+            border-color: #ffffff;
+        }
+
+        /* الزر المميز (تعديل الجهاز): تدرج عنابي فخم مع إطار ذهبي مشع */
+        .btn-goldhen {
+            background: linear-gradient(90deg, #6b0028 0%, #b80036 40%, #d97706 100%);
+            border: 2px solid #fbbf24;
+            box-shadow: inset 0 0 15px rgba(251, 191, 36, 0.5), 0 0 22px rgba(217, 119, 6, 0.6);
+        }
+
+        .btn-goldhen:hover {
+            background: linear-gradient(90deg, #850032 0%, #d9003f 40%, #f59e0b 100%);
+            border-color: #ffe066;
+            box-shadow: inset 0 0 22px rgba(255, 224, 102, 0.8), 0 0 32px rgba(245, 158, 11, 0.9);
+        }
+
+        /* زر الفيسبوك بنفس التنسيق المتناسق */
+        .fb-card {
+            display: block;
+            margin-top: 18px;
+            padding: 16px 20px;
+            background: rgba(0, 120, 160, 0.3);
+            border: 2px solid #00f2fe;
+            border-radius: 14px;
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 1.05rem;
+            font-weight: 600;
+            box-shadow: inset 0 0 12px rgba(0, 242, 254, 0.3), 0 0 18px rgba(0, 242, 254, 0.4);
+            transition: all 0.3s ease;
+            backdrop-filter: blur(6px);
+        }
+
+        .fb-card:hover {
+            transform: translateY(-3px);
+            background: rgba(0, 180, 230, 0.4);
+            box-shadow: inset 0 0 20px rgba(0, 242, 254, 0.6), 0 0 28px rgba(0, 242, 254, 0.8);
+            border-color: #ffffff;
+        }
+
+        /* بطاقة التفاصيل والمعلومات */
+        #info-card {
+            display: none;
+            margin-top: 25px;
+            background: rgba(0, 45, 98, 0.9);
+            border: 2px solid #00f2fe;
+            border-radius: 16px;
+            padding: 25px;
+            box-shadow: 0 0 25px rgba(0, 242, 254, 0.5);
+            backdrop-filter: blur(12px);
+            animation: fadeIn 0.4s ease forwards;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .info-phone {
+            font-size: 1.3rem;
+            color: #ff6b81;
+            margin: 0 0 15px 0;
+            font-weight: 700;
+            direction: ltr;
+        }
+
+        .info-address {
+            font-size: 1rem;
+            color: #ffffff;
+            margin: 0 0 20px 0;
+            line-height: 1.6;
+        }
+
+        .close-btn {
+            background: none;
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            color: #e2e8f0;
+            padding: 8px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .close-btn:hover {
+            background: #f85149;
+            color: white;
+            border-color: #f85149;
+            box-shadow: 0 0 10px rgba(248, 81, 73, 0.6);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1 class="logo-text">Bashir PS4/PS5</h1>
+        <div class="subtitle">مركز بشير لصيانة وتعديل الأجهزة الإلكترونية والرقمية شارع طرابلس الداخلي اجدابيا</div>
+
+        <div id="msgs" class="status-screen">مرحباً بك في موقعي</div>
+
+        <a href="b2/index.html" class="custom-btn btn-goldhen" 
+           onmouseover="updateMsg('اضغط هنا للبدء في تعديل جهازك الآن')" 
+           onmouseout="resetMsg()">
+            تعديل جهازك من سوفت 9.00 الى 13.00
+        </a>
+
+        <button class="custom-btn" onclick="showInfo()" 
+                onmouseover="updateMsg('اضغط هنا لإظهار رقم هاتف وأوقات عمل بشير')" 
+                onmouseout="resetMsg()">
+            رقم هاتف وعنوان بشير
+        </button>
+
+        <a href="https://www.facebook.com/Bshir2015" target="_blank" rel="noopener noreferrer" class="fb-card"
+           onmouseover="updateMsg('مرحباً بكم في صفحتنا الرسمية على فيسبوك')" 
+           onmouseout="resetMsg()">
+            يسعدني انضمامكم ومتابعتكم لصفحتي الرسمية على فيسبوك 
+        </a>
+
+        <div id="info-card">
+            <p class="info-address">العنوان: شارع طرابلس الداخلي - أجدابيا<br>مواعيد العمل: من الساعة 6:00 مساءً حتى 10:00 ليلاً.</p>
+            <p class="info-phone">0924844115 : رقم الهاتف</p>
+            <button class="close-btn" onclick="hideInfo()">إخفاء التفاصيل</button>
+        </div>
+    </div>
+
+    <script>
+        const defaultMsg = "مرحباً بك في موقعي";
+        const msgElement = document.getElementById('msgs');
+
+        function updateMsg(text) {
+            msgElement.innerHTML = text;
+            msgElement.style.color = "#00f2fe";
+        }
+
+        function resetMsg() {
+            msgElement.innerHTML = defaultMsg;
+            msgElement.style.color = "#ffffff";
+        }
+
+        function showInfo() {
+            const infoCard = document.getElementById("info-card");
+            infoCard.style.display = "block";
+            infoCard.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function hideInfo() {
+            document.getElementById("info-card").style.display = "none";
+        }
+    </script>
+</body>
+</html>
