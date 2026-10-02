@@ -6,17 +6,11 @@
 <title>بشير للإلكترونيات  </title>
 <link rel="stylesheet" href="style.css">
 <script>
-/* ============================================================
-   الكشف عن الجهاز والإصدار + التوجيه (ES5 لأقصى توافق)
-   مقارنة بأرقام صحيحة: "11.50" -> 1150 (أدق من parseFloat)
-   ============================================================ */
 var match = navigator.userAgent.match(/PlayStation 4[ /]([\d.]+)/i);
 var isPS4 = match !== null;
 var fwVersion = isPS4 ? match[1] : "0.00";
 var fwParts = fwVersion.split(".");
 var fwCode = (parseInt(fwParts[0], 10) || 0) * 100 + (parseInt(fwParts[1], 10) || 0);
-
-/* جدول الفروع الموحّد — نفسه للتخزين المؤقت وللتشغيل المباشر */
 var BRANCHES = [
     { min: 900,  max: 960,  cache: "cache900.html",     kind: "m900"  },
     { min: 1000, max: 1102, cache: "cachecss.html",     kind: "css"   },
@@ -24,7 +18,6 @@ var BRANCHES = [
     { min: 1250, max: 1300, cache: "cacheslopkit.html", kind: "poops" },
     { min: 1302, max: 1352, cache: "cacheslopkit.html", kind: "jb"    }
 ];
-
 var branch = null;
 for (var i = 0; i < BRANCHES.length; i++) {
     if (fwCode >= BRANCHES[i].min && fwCode <= BRANCHES[i].max) {
@@ -32,7 +25,6 @@ for (var i = 0; i < BRANCHES.length; i++) {
         break;
     }
 }
-
 function onScriptError() {
     var m = document.getElementById("msgs");
     if (m) {
@@ -41,7 +33,6 @@ function onScriptError() {
     }
     setCardState("error");
 }
-
 function loadScript(src, isModule, onload) {
     var s = document.createElement("script");
     if (isModule) { s.type = "module"; }
@@ -50,7 +41,6 @@ function loadScript(src, isModule, onload) {
     if (onload) { s.onload = onload; }
     document.head.appendChild(s);
 }
-
 function setCardState(state) {
     var sp = document.getElementById("loader");
     var card = document.getElementById("card");
@@ -61,12 +51,9 @@ function setCardState(state) {
         if (state === "error")   { card.className = "card card-error"; }
     }
 }
-
-/* التعامل مع نتيجة الثغرة — يقرأ نص الرسالة (GamerHack يستخدم أنماطاً inline) */
 function handleResult(txt) {
     if (!txt) { return; }
     if (txt.indexOf("فشل") !== -1) {
-        /* فشل — أظهر زر إعادة المحاولة + إرشاد */
         setCardState("error");
         var tip = document.getElementById("failTip");
         tip.className = "steps center show";
@@ -76,16 +63,13 @@ function handleResult(txt) {
         return;
     }
     if (txt.indexOf("بنجاح") !== -1 || txt.indexOf("بالفعل") !== -1) {
-        /* نجاح — أخضِر البطاقة وأظهر الخطوات التالية */
-        setCardState("success");
+            setCardState("success");
         var nxt = document.getElementById("nextSteps");
         nxt.className = "steps show";
         return;
     }
-    /* حالة أخرى (تحميل/معلومة) — أخفِ الحلقة فقط */
     setCardState("");
 }
-
 if (isPS4 && branch) {
     if (window.applicationCache && window.applicationCache.status === 0) {
         window.location.replace(branch.cache);
@@ -166,15 +150,13 @@ document.addEventListener("DOMContentLoaded", function () {
         return;
     }
 
-    /* راقب تحديثات الحالة من سكربت الثغرة */
-    if (window.MutationObserver) {
+     if (window.MutationObserver) {
         var mo = new MutationObserver(function () {
             handleResult(m.textContent || m.innerText || "");
         });
         mo.observe(m, { childList: true, characterData: true, subtree: true });
     }
 
-    /* تلميح احتياطي إذا طال الانتظار دون استجابة */
     setTimeout(function () {
         var sp = document.getElementById("loader");
         if (sp && sp.className.indexOf("done") === -1) {
